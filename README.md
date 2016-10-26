@@ -1,4 +1,4 @@
-# eslint-plugin-filenames
+# eslint-plugin-filenames-suffix
 
 Adds [eslint](http://eslint.org/) rules to ensure consistent filenames for your javascript files.
 
@@ -13,7 +13,7 @@ Modify your `.eslintrc` file to load the plugin and enable the rules you want to
 ```json
 {
   "plugins": [
-    "filenames"
+    "filenames-suffix"
   ],
   "rules": {
     "filenames/match-regex": 2,
