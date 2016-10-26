@@ -1,10 +1,5 @@
 # eslint-plugin-filenames
 
-[![NPM Version](https://img.shields.io/npm/v/eslint-plugin-filenames.svg?style=flat-square)](https://www.npmjs.org/package/eslint-plugin-filenames)
-[![Build Status](https://img.shields.io/travis/selaux/eslint-plugin-filenames.svg?style=flat-square)](https://travis-ci.org/selaux/eslint-plugin-filenames)
-[![Coverage Status](https://img.shields.io/coveralls/selaux/eslint-plugin-filenames.svg?style=flat-square)](https://coveralls.io/r/selaux/eslint-plugin-filenames?branch=master)
-[![Dependencies](https://img.shields.io/david/selaux/eslint-plugin-filenames.svg?style=flat-square)](https://david-dm.org/selaux/eslint-plugin-filenames)
-
 Adds [eslint](http://eslint.org/) rules to ensure consistent filenames for your javascript files.
 
 __Please note__: This plugin will only lint the filenames of the `.js`, `.jsx` files you are linting with eslint. It will ignore other files that are not linted with eslint.
@@ -81,6 +76,19 @@ Available transforms:
 '[snake](https://www.npmjs.com/package/lodash.snakecase)',
 '[kebab](https://www.npmjs.com/package/lodash.kebabcase)', and
 '[camel](https://www.npmjs.com/package/lodash.camelcase)'
+
+In addition to applying a transform, you can also allow files to have suffixes. A suffix describes the type
+of module the file exports. A suffix is a singular word that is separated from the filename by a `.` and
+precedes the file extension, e.g. `filename.suffix.ext`. A file with a suffix must reside in a directory
+whose name is the plural version of the suffix, or a subdirectory therein. So for example, if suffixes are
+enabled and a file is named `example.component.jsx`, it must live in a directory named `components` or a
+subdirectory of it.
+
+```json
+"filenames/match-exported": [2, "kebab", "check-suffix"]
+```
+
+`index` files do not require a suffix.
 
 ### Don't allow index.js files (no-index)
 

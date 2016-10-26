@@ -219,6 +219,21 @@ ruleTester.run("lib/rules/match-exported with configuration", exportedRule, {
             options: ['kebab']
         },
         {
+            code: camelCaseCommonJS,
+            filename: "components/variable-name.component.js",
+            options: ['kebab', 'check-suffix']
+        },
+        {
+            code: camelCaseCommonJS,
+            filename: "a/b/components/c/d/variable-name.component.js",
+            options: ['kebab', 'check-suffix']
+        },
+        {
+            code: camelCaseCommonJS,
+            filename: "variable-name/index.js",
+            options: ['kebab', 'check-suffix']
+        },
+        {
             code: snakeCaseCommonJS,
             filename: "variableName.js",
             options: ['camel']
@@ -259,6 +274,22 @@ ruleTester.run("lib/rules/match-exported with configuration", exportedRule, {
             options: ['kebab'],
             errors: [
                 { message: "Filename 'variableName' must match the exported name 'variable-name'.", column: 1, line: 1 }
+            ]
+        },
+        {
+            code: camelCaseCommonJS,
+            filename: "components/variable-name.hello.js",
+            options: ['kebab', 'check-suffix'],
+            errors: [
+                { message: "Filename 'variable-name' must match the exported name 'variable-name'.", column: 1, line: 1 }
+            ]
+        },
+        {
+            code: camelCaseCommonJS,
+            filename: "components/variable-name.component.js",
+            options: ['kebab'],
+            errors: [
+                { message: "Filename 'variable-name.component' must match the exported name 'variable-name'.", column: 1, line: 1 }
             ]
         }
     ]

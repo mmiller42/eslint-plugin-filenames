@@ -1,6 +1,6 @@
 {
-  "name": "eslint-plugin-filenames",
-  "version": "1.1.0",
+  "name": "@mmiller42/eslint-plugin-filenames",
+  "version": "1.2.0",
   "description": "Eslint rule for consistent filenames.",
   "main": "index.js",
   "scripts": {
@@ -12,11 +12,11 @@
     "coveralls": "cat ./build/coverage/lcov.info | coveralls"
   },
   "dependencies": {
+    "inflection": "^1.10.0",
     "lodash.camelcase": "4.1.1",
     "lodash.kebabcase": "4.0.1",
     "lodash.snakecase": "4.0.1"
   },
-
   "devDependencies": {
     "chai": "3.5.0",
     "coveralls": "2.11.7",
@@ -31,14 +31,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/selaux/eslint-plugin-filenames.git"
+    "url": "git://github.com/mmiller42/eslint-plugin-filenames.git"
   },
   "author": "Stefan Lau <github@stefanlau.com>",
+  "contributors": [
+    "Matt Miller <me@mmiller.me>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/selaux/eslint-plugin-filenames/issues"
+    "url": "https://github.com/mmiller42/eslint-plugin-filenames/issues"
   },
-  "homepage": "https://github.com/selaux/eslint-plugin-filenames",
+  "homepage": "https://github.com/mmiller42/eslint-plugin-filenames",
   "keywords": [
     "eslint",
     "eslintplugin",
