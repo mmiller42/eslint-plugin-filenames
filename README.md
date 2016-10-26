@@ -16,9 +16,9 @@ Modify your `.eslintrc` file to load the plugin and enable the rules you want to
     "filenames-suffix"
   ],
   "rules": {
-    "filenames/match-regex": 2,
-    "filenames/match-exported": 2,
-    "filenames/no-index": 2
+    "filenames-suffix/match-regex": 2,
+    "filenames-suffix/match-exported": 2,
+    "filenames-suffix/no-index": 2
   }
 }
 ```
@@ -33,7 +33,7 @@ The convention can be configured using a regular expression (the default is `cam
 exporting files can be ignored with a second configuration parameter.
 
 ```json
-"filenames/match-regex": [2, "^[a-z_]+$", true]
+"filenames-suffix/match-regex": [2, "^[a-z_]+$", true]
 ```
 
 With these configuration options, `camelCase.js` will be reported as an error while `snake_case.js` will pass.
@@ -62,7 +62,7 @@ export default { foo: "bar" };
 If your filename policy doesn't quite match with your variable naming policy, you can add a tansform:
 
 ```json
-"filenames/match-exported": [2, "kebab"]
+"filenames-suffix/match-exported": [2, "kebab"]
 ```
 
 Now, in your code:
@@ -85,7 +85,7 @@ enabled and a file is named `example.component.jsx`, it must live in a directory
 subdirectory of it.
 
 ```json
-"filenames/match-exported": [2, "kebab", "check-suffix"]
+"filenames-suffix/match-exported": [2, "kebab", "check-suffix"]
 ```
 
 `index` files do not require a suffix.
