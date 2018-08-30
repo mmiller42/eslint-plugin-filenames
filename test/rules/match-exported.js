@@ -15,9 +15,13 @@ var testCode = "var foo = 'bar';",
     exportedEs6JsxFunctionCode = "export default function foo() { return <span>Test Fn</span> };",
     exportedEs6Index = "export default function index() {};",
     camelCaseCommonJS = "module.exports = variableName;",
+    camelCaseSuffixCommonJS = "module.exports = variableNameComponent;",
     snakeCaseCommonJS = "module.exports = variable_name;",
     camelCaseEs6 = "export default variableName;",
+    camelCaseSuffixEs6 = "export default variableNameComponent",
     snakeCaseEs6 = "export default variable_name;",
+
+
     ruleTester = new RuleTester();
 
 ruleTester.run("lib/rules/match-exported", exportedRule, {
@@ -234,6 +238,16 @@ ruleTester.run("lib/rules/match-exported with configuration", exportedRule, {
             options: ['kebab', 'check-suffix']
         },
         {
+            code: camelCaseCommonJS,
+            filename: "somefeature/variable-name.component.js",
+            options: ['kebab', 'has-suffix']
+        },
+        {
+            code: camelCaseSuffixCommonJS,
+            filename: "a/b/components/c/d/variable-name.component.js",
+            options: ['kebab', 'has-suffix', 'check-suffix-exported']
+        },
+        {
             code: snakeCaseCommonJS,
             filename: "variableName.js",
             options: ['camel']
@@ -255,6 +269,18 @@ ruleTester.run("lib/rules/match-exported with configuration", exportedRule, {
             filename: "variableName.js",
             parserOptions: { ecmaVersion: 6, sourceType: "module" },
             options: ['camel']
+        },
+        {
+            code: camelCaseEs6,
+            filename: "somefeature/variable-name.component.js",
+            parserOptions: { ecmaVersion: 6, sourceType: "module" },
+            options: ['kebab', 'has-suffix']
+        },
+        {
+            code: camelCaseSuffixEs6,
+            filename: "a/b/components/c/d/variable-name.component.js",
+            parserOptions: { ecmaVersion: 6, sourceType: "module" },
+            options: ['kebab', 'has-suffix', 'check-suffix-exported']
         }
     ],
 
@@ -282,6 +308,23 @@ ruleTester.run("lib/rules/match-exported with configuration", exportedRule, {
             options: ['kebab', 'check-suffix'],
             errors: [
                 { message: "Filename 'variable-name' must match the exported name 'variable-name'.", column: 1, line: 1 }
+            ]
+        },
+        {
+            code: camelCaseSuffixCommonJS,
+            filename: "services/variable-name.service.js",
+            options: ['kebab', 'has-suffix', 'check-suffix-exported'],
+            errors: [
+                { message: "Filename's 'variable-name' suffix 'service' must match the exported name suffix 'component'.", column: 1, line: 1 }
+            ]
+        },
+        {
+            code: camelCaseSuffixEs6,
+            filename: "services/variable-name.service.js",
+            parserOptions: { ecmaVersion: 6, sourceType: "module" },
+            options: ['kebab', 'has-suffix', 'check-suffix-exported'],
+            errors: [
+                { message: "Filename's 'variable-name' suffix 'service' must match the exported name suffix 'component'.", column: 1, line: 1 }
             ]
         },
         {

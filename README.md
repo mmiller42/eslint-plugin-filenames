@@ -79,7 +79,7 @@ Available transforms:
 
 In addition to applying a transform, you can also allow files to have suffixes. A suffix describes the type
 of module the file exports. A suffix is a singular word that is separated from the filename by a `.` and
-precedes the file extension, e.g. `filename.suffix.ext`. A file with a suffix must reside in a directory
+precedes the file extension, e.g. `filename.suffix.ext`. By default a file with a suffix must reside in a directory
 whose name is the plural version of the suffix, or a subdirectory therein. So for example, if suffixes are
 enabled and a file is named `example.component.jsx`, it must live in a directory named `components` or a
 subdirectory of it.
@@ -89,6 +89,25 @@ subdirectory of it.
 ```
 
 `index` files do not require a suffix.
+
+One may want to have suffices but not to have them checked against their parent directories.
+
+```json
+"filenames-suffix/match-exported": [2, "kebab", "has-suffix"]
+```
+
+Some projects may require that exported entities have a suffix being part of their name like:
+
+```javascript
+// side-nav.component.js
+export default class SideNavComponent{}
+```
+
+To validate exported class or function name one can use `check-suffix-exported` option:
+
+```json
+"filenames-suffix/match-exported": [2, "kebab", "has-suffix", "check-suffix-exported"]
+```
 
 ### Don't allow index.js files (no-index)
 
