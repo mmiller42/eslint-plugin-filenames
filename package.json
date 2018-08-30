@@ -7,6 +7,7 @@
     "test": "npm run lint && npm run unit-test --coverage && npm run check-coverage",
     "lint": "eslint .",
     "unit-test": "istanbul test --dir build/coverage _mocha test -- --recursive --reporter dot",
+    "only-test": "mocha --inpsect-brk test --recursive",
     "check-coverage": "istanbul check-coverage --statement 100 --branch 100 --function 100 --lines 100",
     "report-coverage-html": "istanbul report --dir  build/coverage html",
     "coveralls": "cat ./build/coverage/lcov.info | coveralls"
@@ -23,7 +24,7 @@
     "eslint": "^2.0.0",
     "eslint-plugin-filenames": "^1.0.0",
     "istanbul": "0.4.3",
-    "mocha": "2.4.5",
+    "mocha": "^3.3.0",
     "sinon": "1.17.4"
   },
   "peerDependencies": {
